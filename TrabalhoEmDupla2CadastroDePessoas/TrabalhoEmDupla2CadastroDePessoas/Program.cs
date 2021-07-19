@@ -10,6 +10,8 @@ namespace TrabalhoEmDupla2CadastroDePessoas
     {
         static void Main(string[] args)
         {
+            Menu.MostraMenu();
+            Console.ReadLine();
         }
     }
 }
