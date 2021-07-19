@@ -11,8 +11,9 @@ namespace TrabalhoEmDupla2CadastroDePessoas.Models
         public string CPF { get; set; }
         public string RG { get; set; }
 
-        public PessoaFisica(string nome, DateTime dataDeNascimento, Endereco endereco, string cpf, string rg)
+        public PessoaFisica(int id, string nome, DateTime dataDeNascimento, Endereco endereco, string cpf, string rg)
         {
+            this.ID = id;
             this.Nome = nome;
             this.DataDeNascimento = dataDeNascimento;
             this.Endereco = endereco;
@@ -25,7 +26,7 @@ namespace TrabalhoEmDupla2CadastroDePessoas.Models
         }
         public override string ToString()
         {
-            return $"Nome: {Nome}   Data de Nascimento: {DataDeNascimento}   Endereço: {Endereco}   CPF: {CPF}   RG: {RG}";
+            return $"PESSOA {ID}\n====================================================\n   Nome: {Nome}\n   Data de Nascimento: {DataDeNascimento.ToShortDateString()}\n   Endereço:\n      CEP: {Endereco.CEP}\n      Cidade: {Endereco.Cidade}\n      Bairro: {Endereco.Bairro}\n      Rua: {Endereco.Rua}\n      Número da Residência: {Endereco.NumeroResidencia}\n      Complemento: {Endereco.Complemento}\n   CPF: {CPF}\n   RG: {RG}\n====================================================";
         }
     }
 }

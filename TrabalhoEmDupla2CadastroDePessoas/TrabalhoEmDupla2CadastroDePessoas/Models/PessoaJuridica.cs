@@ -11,10 +11,14 @@ namespace TrabalhoEmDupla2CadastroDePessoas.Models
         public string IE { get; set; }
         public string CNPJ { get; set; }
 
-        public PessoaJuridica(string ie, string cnpj)
+        public PessoaJuridica(int id, string nome, DateTime dataDeNascimento, Endereco endereco, string ie, string cnpj)
         {
+            this.ID = id;
+            this.Nome = nome;
+            this.DataDeNascimento = dataDeNascimento;
+            this.Endereco = endereco;
             this.IE = ie;
-            this.CNPJ = ie;
+            this.CNPJ = cnpj;
         }
         public PessoaJuridica()
         {
@@ -22,7 +26,7 @@ namespace TrabalhoEmDupla2CadastroDePessoas.Models
         }
         public override string ToString()
         {
-            return $"Nome: {Nome}   Data de Nascimento: {DataDeNascimento}   Endereço: {Endereco}   IE: {IE}   CNPJ: {CNPJ}";
+            return $"Nome: { Nome}\nData de Nascimento: { DataDeNascimento.ToShortDateString()}\nEndereço:\n   CEP: { Endereco.CEP}\n   Cidade: { Endereco.Cidade}\n   Bairro: { Endereco.Bairro}\n   Rua: { Endereco.Rua}\n   Número da Residência: { Endereco.NumeroResidencia}\n   Complemento: { Endereco.Complemento}\nIE: {IE}\nCNPJ: {CNPJ}";
         }
     }
 }
