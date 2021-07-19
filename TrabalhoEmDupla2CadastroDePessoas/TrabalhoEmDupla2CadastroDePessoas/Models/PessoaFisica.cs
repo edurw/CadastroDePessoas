@@ -11,8 +11,11 @@ namespace TrabalhoEmDupla2CadastroDePessoas.Models
         public string CPF { get; set; }
         public string RG { get; set; }
 
-        public PessoaFisica(string cpf, string rg)
+        public PessoaFisica(string nome, DateTime dataDeNascimento, Endereco endereco, string cpf, string rg)
         {
+            this.Nome = nome;
+            this.DataDeNascimento = dataDeNascimento;
+            this.Endereco = endereco;
             this.CPF = cpf;
             this.RG = rg;
         }

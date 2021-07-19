@@ -9,6 +9,9 @@ namespace TrabalhoEmDupla2CadastroDePessoas
 {
     class Menu
     {
+        List<PessoaFisica> listaPF = new List<PessoaFisica>();
+        List<PessoaJuridica> listaPJ = new List<PessoaJuridica>();
+
         public static void MostraMenu()
         {
             Console.Clear();
@@ -29,9 +32,9 @@ namespace TrabalhoEmDupla2CadastroDePessoas
         }
         private static void Rodape()
         {
-            Console.Write("======================================= Opção:");
+            Console.Write("===================================== Opção: ");
         }
-        private static void Escolha()
+        private void Escolha()
         {
             int opcao = 0;
             do
@@ -51,7 +54,9 @@ namespace TrabalhoEmDupla2CadastroDePessoas
                 case 0:
                     break;
                 case 1:
-                    
+                    Cadastro cadastro = new Cadastro();
+                    cadastro.CadastroPessoaFisica();
+                    //listaPF.Add();
                     break;
                 case 2:
                     break;

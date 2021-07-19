@@ -15,7 +15,7 @@ namespace TrabalhoEmDupla2CadastroDePessoas.Models
         public string Complemento { get; set; }
         public string Bairro { get; set; }
 
-        public Endereco(string cep, string cidade, string rua, string numeroResidencia, string complemento, string bairro)
+        public Endereco(string cep, string cidade, string bairro, string rua, string numeroResidencia, string complemento)
         {
             this.CEP = cep;
             this.Cidade = cidade;
