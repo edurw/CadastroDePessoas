@@ -7,95 +7,42 @@ using TrabalhoEmDupla2CadastroDePessoas.Models;
 
 namespace TrabalhoEmDupla2CadastroDePessoas
 {
-    class Menu
+    class Menu : Tela
     {
-        Cadastro cadastro = new Cadastro();
-        public void MostraMenu()
+        ModuloPF moduloPf;
+        ModuloPJ moduloPj;
+        public Menu()
         {
-            int opcao = 0;
-            do
-            {
-                Console.Clear();
-                Cabecalho();
-                Opcoes();
-                Rodape();
-                opcao = LerOpcao();
-                Escolha(opcao);
-
-            } while (opcao != 0);
+            moduloPf = new ModuloPF();
+            moduloPj = new ModuloPJ();
+            this.funcaoEscolha = Escolha;
+            this.funcaoOpcoes = Opcoes;
         }
 
-        private void Cabecalho()
-        {
-            Console.WriteLine(@"\\\\\\\\\\\\\\\\\\\\ HAVAN LABS ////////////////////");
-            Console.WriteLine("====================================================");
-        }
-        private void Opcoes()
-        {
-            Console.WriteLine("\t1 - Cadastro Pessoa Física\n\t2 - Cadastro Pessoa Jurídica\n\t3 - Exibir Pessoa Física Cadastrada\n\t4 - Exibir Pessoa Jurídica Cadastrada\n\t0 - Sair");
-             
-        }
-
-        private static int LerOpcao()
-        {
-            int opcao = 0;
-            try
-            {
-                opcao = Convert.ToInt32(Console.ReadLine());
-            }
-            catch (FormatException)
-            {
-                Console.WriteLine("Informação inválida");
-            }
-            return opcao;
-        }
-
-        private void Rodape()
-        {
-            Console.Write("=========================================== Opção: ");
-        }
         private void Escolha(int opcao)
         {
             switch (opcao)
             {
                 case 1:
-                    CabecalhoCadastroPessoaFisica();
-                    cadastro.CadastroPessoaFisica();
+                    Console.Clear();
+                    moduloPf.Start();
                     break;
                 case 2:
-                    CabecalhoCadastroPessoaJuridica();
-                    cadastro.CadastroPessoaJuridica();
-                    break;
-                case 3:
-                    CabecalhoPessoaFisicaCadastrada();
-                    cadastro.MostrarPF();
-                    Console.WriteLine("Pressione ENTER para sair...");
-                    Console.ReadLine();
-                    break;
-                case 4:
-                    CabecalhoPessoaJuridicaCadastrada();
-                    cadastro.MostrarPJ();
-                    Console.WriteLine("Pressione ENTER para sair...");
-                    Console.ReadLine();
-                    break;
+                    Console.Clear();
+                    moduloPj.Start();
+                    break;                
             }
         }
 
-        private void CabecalhoCadastroPessoaFisica()
+        private int Opcoes()
         {
-            Console.WriteLine("\n============== CADASTRO PESSOA FÍSICA ==============");
-        }
-        private void CabecalhoCadastroPessoaJuridica()
-        {
-            Console.WriteLine("\n============= CADASTRO PESSOA JURÍDICA =============");
-        }
-        private void CabecalhoPessoaFisicaCadastrada()
-        {
-            Console.WriteLine("\n============= PESSOA FÍSICA CADASTRADA =============");
-        }
-        private void CabecalhoPessoaJuridicaCadastrada()
-        { 
-            Console.WriteLine("\n============ PESSOA JURÍDICA CADASTRADA ============");
+            int escolha;
+            Console.WriteLine("1 -Pessoa Fisica" +
+                            "\n2 -Pessoa Juridica" +
+                            "\n0 -Sair");
+            Console.WriteLine("===============================================Opção:");
+            escolha = Convert.ToInt32(Console.ReadLine());
+            return escolha;
         }
     }
 }

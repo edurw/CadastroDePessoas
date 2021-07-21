@@ -26,7 +26,7 @@ namespace TrabalhoEmDupla2CadastroDePessoas.Models
         }
         public override string ToString()
         {
-            return $"PESSOA {ID}\n====================================================\n   Nome: {Nome}\n   Data de Nascimento: {DataDeNascimento.ToShortDateString()}\n   Endereço:\n      CEP: {Endereco.CEP}\n      Cidade: {Endereco.Cidade}\n      Bairro: {Endereco.Bairro}\n      Rua: {Endereco.Rua}\n      Número da Residência: {Endereco.NumeroResidencia}\n      Complemento: {Endereco.Complemento}\n   CPF: {CPF}\n   RG: {RG}\n====================================================";
+            return $"PESSOA ID: {ID}\n====================================================\n   Nome: {Nome}\n   Data de Nascimento: {DataDeNascimento.ToShortDateString()}\n   Endereço:\n      CEP: {Endereco.CEP}\n      Cidade: {Endereco.Cidade}\n      Bairro: {Endereco.Bairro}\n      Rua: {Endereco.Rua}\n      Número da Residência: {Endereco.NumeroResidencia}\n      Complemento: {Endereco.Complemento}\n   CPF: {CPF}\n   RG: {RG}\n====================================================";
         }
     }
 }
