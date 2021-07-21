@@ -36,9 +36,6 @@ namespace TrabalhoEmDupla2CadastroDePessoas
                 crud.Delete();
                 Console.Clear();
                 break;
-            default:
-                Console.WriteLine("Opção Inválida!");
-                break;
         }
     }
 
