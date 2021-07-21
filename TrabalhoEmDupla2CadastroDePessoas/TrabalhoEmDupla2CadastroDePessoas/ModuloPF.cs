@@ -36,20 +36,21 @@ namespace TrabalhoEmDupla2CadastroDePessoas
                 crud.Delete();
                 Console.Clear();
                 break;
-        }
+            
+            }
     }
 
     private int Opcoes()
     {
         int escolha;
             Console.WriteLine("1 -Cadastrar" +
-                        "\n2 -Listar" +
-                        "\n3 -Editar" +
-                        "\n4 -Deletar" +
-                        "\n0 -Sair");
+                              "\n2 -Listar" +
+                              "\n3 -Editar" +
+                              "\n4 -Deletar" +
+                              "\n0 -Sair");
             Console.WriteLine("===============================================Opção:");
-        escolha = Convert.ToInt32(Console.ReadLine());
-        return escolha;
+        escolha = Valida.LeituraNumero();
+            return escolha;
     }
     }
 }

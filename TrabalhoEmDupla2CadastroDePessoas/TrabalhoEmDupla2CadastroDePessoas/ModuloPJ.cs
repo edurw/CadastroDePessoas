@@ -36,7 +36,8 @@ namespace TrabalhoEmDupla2CadastroDePessoas
                     crud.Delete();
                     Console.Clear();
                     break;
-            }
+
+                            }
         }
 
         private int Opcoes()
@@ -48,7 +49,7 @@ namespace TrabalhoEmDupla2CadastroDePessoas
                             "\n4 -Deletar" +
                             "\n0 -Sair");
             Console.WriteLine("===============================================Opção:");
-            escolha = Convert.ToInt32(Console.ReadLine());
+            escolha = Valida.LeituraNumero();
             return escolha;
         }
     }

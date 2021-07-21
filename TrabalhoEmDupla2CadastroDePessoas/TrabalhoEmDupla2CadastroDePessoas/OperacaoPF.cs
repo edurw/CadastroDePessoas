@@ -29,22 +29,22 @@ namespace TrabalhoEmDupla2CadastroDePessoas
                 {
                     Console.WriteLine("Pessoa Encontrada");
                     Console.Write("Nome: ");
-                    item.Nome = Console.ReadLine();
+                    item.Nome = Valida.ValidaString();
                     Console.Write("Data de Nascimento:\n");
                     Console.Write("   Dia: ");
-                    int Dia = Convert.ToInt32(Console.ReadLine());
+                    int Dia = Valida.LeituraNumero();
                     Console.Write("   Mês: ");
-                    int Mes = Convert.ToInt32(Console.ReadLine());
+                    int Mes = Valida.LeituraNumero();
                     Console.Write("   Ano: ");
-                    int Ano = Convert.ToInt32(Console.ReadLine());
+                    int Ano = Valida.LeituraNumero();
                     item.DataDeNascimento = new DateTime(Ano, Mes, Dia);
                     Console.WriteLine("Endereço:");
                     Endereco endereco = OperacoesEndereco.CadastroEndereco();
                     item.Endereco = endereco;
                     Console.Write("CPF: ");
-                    item.CPF = Console.ReadLine();
+                    item.CPF = Valida.ValidaString();
                     Console.Write("RG: ");
-                    item.RG = Console.ReadLine();
+                    item.RG = Valida.ValidaString();
 
                 }
             }
@@ -54,21 +54,21 @@ namespace TrabalhoEmDupla2CadastroDePessoas
         public  void Cadastrar()
         {
             Console.Write("Nome: ");
-            string nome = Console.ReadLine();
+            string nome = Valida.ValidaString();
             Console.Write("Data de Nascimento:\n");
             Console.Write("   Dia: ");
-            int Dia = Convert.ToInt32(Console.ReadLine());
+            int Dia = Valida.LeituraNumero();
             Console.Write("   Mês: ");
-            int Mes = Convert.ToInt32(Console.ReadLine());
+            int Mes = Valida.LeituraNumero();
             Console.Write("   Ano: ");
-            int Ano = Convert.ToInt32(Console.ReadLine());
+            int Ano = Valida.LeituraNumero();
             DateTime dataDeNascimento = new DateTime(Ano, Mes, Dia);
             Console.WriteLine("Endereço:");
             Endereco endereco = OperacoesEndereco.CadastroEndereco();
             Console.Write("CPF: ");
-            string cpf = Console.ReadLine();
+            string cpf = Valida.ValidaString();
             Console.Write("RG: ");
-            string rg = Console.ReadLine();
+            string rg = Valida.ValidaString();
             PessoaFisica model = new PessoaFisica(lista.Count()+1, nome, dataDeNascimento, endereco, cpf, rg);
             lista.Add(model);
         }

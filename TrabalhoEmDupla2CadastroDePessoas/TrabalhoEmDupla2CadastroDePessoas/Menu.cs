@@ -30,7 +30,8 @@ namespace TrabalhoEmDupla2CadastroDePessoas
                 case 2:
                     Console.Clear();
                     moduloPj.Start();
-                    break;                
+                    break;
+
             }
         }
 
@@ -41,7 +42,8 @@ namespace TrabalhoEmDupla2CadastroDePessoas
                             "\n2 -Pessoa Juridica" +
                             "\n0 -Sair");
             Console.WriteLine("===============================================Opção:");
-            escolha = Convert.ToInt32(Console.ReadLine());
+            escolha = Valida.LeituraNumero();
+
             return escolha;
         }
     }
