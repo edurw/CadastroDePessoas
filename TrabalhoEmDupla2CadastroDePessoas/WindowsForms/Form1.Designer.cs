@@ -58,6 +58,17 @@ namespace WindowsForms
             this.BtnLimpar = new System.Windows.Forms.Button();
             this.CmpData = new System.Windows.Forms.DateTimePicker();
             this.CmpNum = new System.Windows.Forms.NumericUpDown();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPF_CNPJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RG_IE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rua = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Complemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CEP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DGListar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmpNum)).BeginInit();
             this.SuspendLayout();
@@ -160,7 +171,19 @@ namespace WindowsForms
             // DGListar
             // 
             this.DGListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGListar.Location = new System.Drawing.Point(444, 160);
+            this.DGListar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.Nome,
+            this.Data,
+            this.CPF_CNPJ,
+            this.RG_IE,
+            this.Cidade,
+            this.Bairro,
+            this.Rua,
+            this.Numero,
+            this.Complemento,
+            this.CEP});
+            this.DGListar.Location = new System.Drawing.Point(457, 160);
             this.DGListar.Name = "DGListar";
             this.DGListar.Size = new System.Drawing.Size(337, 254);
             this.DGListar.TabIndex = 13;
@@ -316,6 +339,61 @@ namespace WindowsForms
             this.CmpNum.TabIndex = 20;
             this.CmpNum.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "Id";
+            this.ID.Name = "ID";
+            // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            // 
+            // Data
+            // 
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            // 
+            // CPF_CNPJ
+            // 
+            this.CPF_CNPJ.HeaderText = "CPF/CNPJ";
+            this.CPF_CNPJ.Name = "CPF_CNPJ";
+            // 
+            // RG_IE
+            // 
+            this.RG_IE.HeaderText = "RG/IE";
+            this.RG_IE.Name = "RG_IE";
+            // 
+            // Cidade
+            // 
+            this.Cidade.HeaderText = "Cidade";
+            this.Cidade.Name = "Cidade";
+            // 
+            // Bairro
+            // 
+            this.Bairro.HeaderText = "Bairro";
+            this.Bairro.Name = "Bairro";
+            // 
+            // Rua
+            // 
+            this.Rua.HeaderText = "Rua";
+            this.Rua.Name = "Rua";
+            // 
+            // Numero
+            // 
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            // 
+            // Complemento
+            // 
+            this.Complemento.HeaderText = "Complemento";
+            this.Complemento.Name = "Complemento";
+            // 
+            // CEP
+            // 
+            this.CEP.HeaderText = "CEP";
+            this.CEP.Name = "CEP";
+            // 
             // Form1
             // 
             this.AccessibleName = "teste";
@@ -389,6 +467,17 @@ namespace WindowsForms
         private System.Windows.Forms.Button BtnLimpar;
         private System.Windows.Forms.DateTimePicker CmpData;
         private System.Windows.Forms.NumericUpDown CmpNum;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPF_CNPJ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RG_IE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Bairro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rua;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Complemento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CEP;
     }
 }
 

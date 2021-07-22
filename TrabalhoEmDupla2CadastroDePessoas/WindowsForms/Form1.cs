@@ -15,9 +15,13 @@ namespace WindowsForms
     public partial class Form1 : Form
     {
         bool tipoPessoa = false; //false= fisica, true=juridica
+        public List<PessoaFisica> pessoasF = new List<PessoaFisica>();
+        public List<PessoaJuridica> pessoasJ = new List<PessoaJuridica>();
         public Form1()
         {
             InitializeComponent();
+            DGListar.AutoGenerateColumns = false;
+            DGListar.AllowUserToAddRows = false;
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -58,7 +62,7 @@ namespace WindowsForms
             LbTitulo.Text = "Cadastro de Pessoa Fisica";
             tipoPessoa = false;
             LimparCampos();
-            ListarFisica();
+            exibir();
         }
 
 
@@ -69,18 +73,9 @@ namespace WindowsForms
             LbData.Text = "Data de Fundação:";
             LbTitulo.Text = "Cadastro de Pessoa Juridica";
             tipoPessoa = true;
-            LimparCampos();
-            ListarJuridica();
-        }
-        private void ListarFisica()
-        {
-            //throw new NotImplementedException();
+            exibir();
         }
 
-        private void ListarJuridica()
-        {
-            //throw new NotImplementedException();
-        }
 
         private void BtnLimpar_Click(object sender, EventArgs e)
         {
@@ -107,24 +102,60 @@ namespace WindowsForms
                 PessoaJuridica pj = new PessoaJuridica();
                 pj.Nome = CmpNome.Text;
                 pj.DataDeNascimento = CmpData.Value;
-                pj.CNPJ = CmpNome.Text;
+                pj.CNPJ = CmpCPF.Text;
                 pj.IE = CmpRG.Text;
                 Endereco endereco = new Endereco();
                 endereco.Cidade = CmpCidade.Text;
                 endereco.Bairro = CmpBairro.Text;
                 endereco.Rua = CmpRua.Text;
                 endereco.NumeroResidencia = CmpNum.Text;
-                endereco.Complemento = CmpCidade.Text;
+                endereco.Complemento = CmpComplemento.Text;
                 endereco.CEP = CmpCEP.Text;
                 pj.Endereco = endereco;
-                Crud
-                
-
-
+                pj.ID = pessoasJ.Count + 1;
+                pessoasJ.Add(pj);
+                exibir();
             }
             else           //se for fisica...
             {
+                PessoaFisica pf = new PessoaFisica();
+                pf.Nome = CmpNome.Text;
+                pf.DataDeNascimento = CmpData.Value;
+                pf.CPF = CmpCPF.Text;
+                pf.RG = CmpRG.Text;
+                Endereco endereco = new Endereco();
+                endereco.Cidade = CmpCidade.Text;
+                endereco.Bairro = CmpBairro.Text;
+                endereco.Rua = CmpRua.Text;
+                endereco.NumeroResidencia = CmpNum.Text;
+                endereco.Complemento = CmpComplemento.Text;
+                endereco.CEP = CmpCEP.Text;
+                pf.Endereco = endereco;
+                pf.ID = pessoasF.Count + 1;
+                pessoasF.Add(pf);
+                exibir();
+            }
+        }
 
+        private void exibir() 
+        {
+            if (tipoPessoa) //se for juridica...
+            {
+                DGListar.Rows.Clear();
+                foreach (PessoaJuridica pessoa in pessoasJ)
+                {
+                    DGListar.Rows.Add(pessoa.ID,pessoa.Nome,pessoa.DataDeNascimento, pessoa.CNPJ,pessoa.IE, pessoa.Endereco.Cidade, pessoa.Endereco.Bairro, pessoa.Endereco.Rua, pessoa.Endereco.NumeroResidencia, pessoa.Endereco.Complemento, pessoa.Endereco.CEP);
+                }
+                DGListar.Refresh();
+            }
+            else           //se for fisica...
+            {
+                DGListar.Rows.Clear();
+                foreach (PessoaFisica pessoa in pessoasF)
+                {
+                    DGListar.Rows.Add(pessoa.ID, pessoa.Nome, pessoa.DataDeNascimento, pessoa.CPF, pessoa.RG, pessoa.Endereco.Cidade, pessoa.Endereco.Bairro, pessoa.Endereco.Rua, pessoa.Endereco.NumeroResidencia, pessoa.Endereco.Complemento, pessoa.Endereco.CEP);
+                }
+                DGListar.Refresh();
             }
         }
 
