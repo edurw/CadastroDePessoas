@@ -33,13 +33,11 @@ namespace WindowsForms
             this.RdFisica = new System.Windows.Forms.RadioButton();
             this.RdJuridica = new System.Windows.Forms.RadioButton();
             this.CmpNome = new System.Windows.Forms.TextBox();
-            this.CmpData = new System.Windows.Forms.TextBox();
             this.CmpCPF = new System.Windows.Forms.TextBox();
             this.CmpRG = new System.Windows.Forms.TextBox();
             this.CmpCidade = new System.Windows.Forms.TextBox();
             this.CmpBairro = new System.Windows.Forms.TextBox();
             this.CmpRua = new System.Windows.Forms.TextBox();
-            this.CmpNum = new System.Windows.Forms.TextBox();
             this.CmpComplemento = new System.Windows.Forms.TextBox();
             this.CmpCEP = new System.Windows.Forms.TextBox();
             this.DGListar = new System.Windows.Forms.DataGridView();
@@ -58,7 +56,10 @@ namespace WindowsForms
             this.BtnSalvar = new System.Windows.Forms.Button();
             this.BtnDeletar = new System.Windows.Forms.Button();
             this.BtnLimpar = new System.Windows.Forms.Button();
+            this.CmpData = new System.Windows.Forms.DateTimePicker();
+            this.CmpNum = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.DGListar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CmpNum)).BeginInit();
             this.SuspendLayout();
             // 
             // LbTitulo
@@ -106,13 +107,6 @@ namespace WindowsForms
             this.CmpNome.TabIndex = 3;
             this.CmpNome.Tag = "";
             // 
-            // CmpData
-            // 
-            this.CmpData.Location = new System.Drawing.Point(111, 186);
-            this.CmpData.Name = "CmpData";
-            this.CmpData.Size = new System.Drawing.Size(301, 20);
-            this.CmpData.TabIndex = 4;
-            // 
             // CmpCPF
             // 
             this.CmpCPF.Location = new System.Drawing.Point(111, 212);
@@ -149,13 +143,6 @@ namespace WindowsForms
             this.CmpRua.Size = new System.Drawing.Size(301, 20);
             this.CmpRua.TabIndex = 9;
             // 
-            // CmpNum
-            // 
-            this.CmpNum.Location = new System.Drawing.Point(111, 342);
-            this.CmpNum.Name = "CmpNum";
-            this.CmpNum.Size = new System.Drawing.Size(301, 20);
-            this.CmpNum.TabIndex = 10;
-            // 
             // CmpComplemento
             // 
             this.CmpComplemento.Location = new System.Drawing.Point(111, 368);
@@ -177,6 +164,7 @@ namespace WindowsForms
             this.DGListar.Name = "DGListar";
             this.DGListar.Size = new System.Drawing.Size(337, 254);
             this.DGListar.TabIndex = 13;
+            this.DGListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGListar_CellContentClick);
             // 
             // LbNome
             // 
@@ -286,6 +274,7 @@ namespace WindowsForms
             this.BtnSalvar.TabIndex = 16;
             this.BtnSalvar.Text = "Salvar";
             this.BtnSalvar.UseVisualStyleBackColor = true;
+            this.BtnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
             // BtnDeletar
             // 
@@ -295,6 +284,7 @@ namespace WindowsForms
             this.BtnDeletar.TabIndex = 17;
             this.BtnDeletar.Text = "Deletar";
             this.BtnDeletar.UseVisualStyleBackColor = true;
+            this.BtnDeletar.Click += new System.EventHandler(this.BtnDeletar_Click);
             // 
             // BtnLimpar
             // 
@@ -306,12 +296,34 @@ namespace WindowsForms
             this.BtnLimpar.UseVisualStyleBackColor = true;
             this.BtnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
             // 
+            // CmpData
+            // 
+            this.CmpData.Location = new System.Drawing.Point(111, 187);
+            this.CmpData.Name = "CmpData";
+            this.CmpData.Size = new System.Drawing.Size(301, 20);
+            this.CmpData.TabIndex = 19;
+            // 
+            // CmpNum
+            // 
+            this.CmpNum.Location = new System.Drawing.Point(111, 342);
+            this.CmpNum.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.CmpNum.Name = "CmpNum";
+            this.CmpNum.Size = new System.Drawing.Size(301, 20);
+            this.CmpNum.TabIndex = 20;
+            this.CmpNum.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
             // Form1
             // 
             this.AccessibleName = "teste";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(806, 450);
+            this.Controls.Add(this.CmpNum);
+            this.Controls.Add(this.CmpData);
             this.Controls.Add(this.BtnLimpar);
             this.Controls.Add(this.BtnDeletar);
             this.Controls.Add(this.BtnSalvar);
@@ -328,13 +340,11 @@ namespace WindowsForms
             this.Controls.Add(this.DGListar);
             this.Controls.Add(this.CmpCEP);
             this.Controls.Add(this.CmpComplemento);
-            this.Controls.Add(this.CmpNum);
             this.Controls.Add(this.CmpRua);
             this.Controls.Add(this.CmpBairro);
             this.Controls.Add(this.CmpCidade);
             this.Controls.Add(this.CmpRG);
             this.Controls.Add(this.CmpCPF);
-            this.Controls.Add(this.CmpData);
             this.Controls.Add(this.CmpNome);
             this.Controls.Add(this.RdJuridica);
             this.Controls.Add(this.RdFisica);
@@ -342,6 +352,7 @@ namespace WindowsForms
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.DGListar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CmpNum)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,13 +364,11 @@ namespace WindowsForms
         private System.Windows.Forms.RadioButton RdFisica;
         private System.Windows.Forms.RadioButton RdJuridica;
         private System.Windows.Forms.TextBox CmpNome;
-        private System.Windows.Forms.TextBox CmpData;
         private System.Windows.Forms.TextBox CmpCPF;
         private System.Windows.Forms.TextBox CmpRG;
         private System.Windows.Forms.TextBox CmpCidade;
         private System.Windows.Forms.TextBox CmpBairro;
         private System.Windows.Forms.TextBox CmpRua;
-        private System.Windows.Forms.TextBox CmpNum;
         private System.Windows.Forms.TextBox CmpComplemento;
         private System.Windows.Forms.TextBox CmpCEP;
         private System.Windows.Forms.DataGridView DGListar;
@@ -378,6 +387,8 @@ namespace WindowsForms
         private System.Windows.Forms.Button BtnSalvar;
         private System.Windows.Forms.Button BtnDeletar;
         private System.Windows.Forms.Button BtnLimpar;
+        private System.Windows.Forms.DateTimePicker CmpData;
+        private System.Windows.Forms.NumericUpDown CmpNum;
     }
 }
 

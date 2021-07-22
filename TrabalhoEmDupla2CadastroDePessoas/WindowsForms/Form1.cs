@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrabalhoEmDupla2CadastroDePessoas.Models;
+using TrabalhoEmDupla2CadastroDePessoas;
 
 namespace WindowsForms
 {
     public partial class Form1 : Form
     {
+        bool tipoPessoa = false; //false= fisica, true=juridica
         public Form1()
         {
             InitializeComponent();
@@ -53,6 +56,7 @@ namespace WindowsForms
             LbRG.Text = "RG:";
             LbData.Text = "Data de Nascimento:";
             LbTitulo.Text = "Cadastro de Pessoa Fisica";
+            tipoPessoa = false;
             LimparCampos();
             ListarFisica();
         }
@@ -64,6 +68,7 @@ namespace WindowsForms
             LbRG.Text = "IE:";
             LbData.Text = "Data de Fundação:";
             LbTitulo.Text = "Cadastro de Pessoa Juridica";
+            tipoPessoa = true;
             LimparCampos();
             ListarJuridica();
         }
@@ -93,6 +98,56 @@ namespace WindowsForms
             CmpComplemento.Text = "";
             CmpNum.Text = "";
             CmpCEP.Text = "";
+        }
+
+        private void BtnSalvar_Click(object sender, EventArgs e)
+        {
+            if (tipoPessoa) //se for juridica...
+            {
+                PessoaJuridica pj = new PessoaJuridica();
+                pj.Nome = CmpNome.Text;
+                pj.DataDeNascimento = CmpData.Value;
+                pj.CNPJ = CmpNome.Text;
+                pj.IE = CmpRG.Text;
+                Endereco endereco = new Endereco();
+                endereco.Cidade = CmpCidade.Text;
+                endereco.Bairro = CmpBairro.Text;
+                endereco.Rua = CmpRua.Text;
+                endereco.NumeroResidencia = CmpNum.Text;
+                endereco.Complemento = CmpCidade.Text;
+                endereco.CEP = CmpCEP.Text;
+                pj.Endereco = endereco;
+                Crud
+                
+
+
+            }
+            else           //se for fisica...
+            {
+
+            }
+        }
+
+        private void BtnDeletar_Click(object sender, EventArgs e)
+        {
+            if (tipoPessoa) //se for juridica...
+            {
+
+            }
+            else           //se for fisica...
+            {
+
+            }
+        }
+
+        private void DGListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

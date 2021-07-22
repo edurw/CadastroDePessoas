@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TrabalhoEmDupla2CadastroDePessoas
@@ -11,10 +12,9 @@ namespace TrabalhoEmDupla2CadastroDePessoas
         static void Main(string[] args)
         {
             Menu menu = new Menu();
-
-            menu.MostraMenu();
+            menu.Start();
             Console.WriteLine("Saindo ...");
-            Console.ReadLine();
+            Thread.Sleep(1000);
         }
     }
 }
