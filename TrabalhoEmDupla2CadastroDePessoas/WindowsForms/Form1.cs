@@ -17,6 +17,9 @@ namespace WindowsForms
         bool tipoPessoa = false; //false= fisica, true=juridica
         public List<PessoaFisica> pessoasF = new List<PessoaFisica>();
         public List<PessoaJuridica> pessoasJ = new List<PessoaJuridica>();
+        private static int idBackup=0;
+        private static int idAtual = 1;
+        private static Pessoa PessoaSelect =null;
         public Form1()
         {
             InitializeComponent();
@@ -63,6 +66,7 @@ namespace WindowsForms
             tipoPessoa = false;
             LimparCampos();
             exibir();
+            LimparCampos();
         }
 
 
@@ -74,6 +78,7 @@ namespace WindowsForms
             LbTitulo.Text = "Cadastro de Pessoa Juridica";
             tipoPessoa = true;
             exibir();
+            LimparCampos();
         }
 
 
@@ -93,12 +98,39 @@ namespace WindowsForms
             CmpComplemento.Text = "";
             CmpNum.Text = "";
             CmpCEP.Text = "";
+            idBackup = 0;
+            PessoaSelect = null;
         }
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
             if (tipoPessoa) //se for juridica...
             {
+                if (idBackup != 0)//alterar registro
+                {
+                    pessoasJ.Remove((PessoaJuridica)PessoaSelect);
+                    PessoaJuridica pj = new PessoaJuridica();
+                    pj.Nome = CmpNome.Text;
+                    pj.DataDeNascimento = CmpData.Value;
+                    pj.CNPJ = CmpCPF.Text;
+                    pj.IE = CmpRG.Text;
+                    Endereco endereco = new Endereco();
+                    endereco.Cidade = CmpCidade.Text;
+                    endereco.Bairro = CmpBairro.Text;
+                    endereco.Rua = CmpRua.Text;
+                    endereco.NumeroResidencia = CmpNum.Text;
+                    endereco.Complemento = CmpComplemento.Text;
+                    endereco.CEP = CmpCEP.Text;
+                    pj.Endereco = endereco;
+                    pj.ID = idBackup;
+                    idBackup = 0;
+                    pessoasJ.Add(pj);
+                    exibir();
+                    LimparCampos();
+                }
+                else //registro novo
+                {
+
                 PessoaJuridica pj = new PessoaJuridica();
                 pj.Nome = CmpNome.Text;
                 pj.DataDeNascimento = CmpData.Value;
@@ -112,12 +144,40 @@ namespace WindowsForms
                 endereco.Complemento = CmpComplemento.Text;
                 endereco.CEP = CmpCEP.Text;
                 pj.Endereco = endereco;
-                pj.ID = pessoasJ.Count + 1;
+                pj.ID = idAtual;
+                idAtual++;
                 pessoasJ.Add(pj);
                 exibir();
+                LimparCampos();
+                }
             }
             else           //se for fisica...
             {
+                if (idBackup != 0)//registro alterar
+                {
+                    pessoasF.Remove((PessoaFisica)PessoaSelect);
+                    PessoaFisica pf = new PessoaFisica();
+                    pf.Nome = CmpNome.Text;
+                    pf.DataDeNascimento = CmpData.Value;
+                    pf.CPF = CmpCPF.Text;
+                    pf.RG = CmpRG.Text;
+                    Endereco endereco = new Endereco();
+                    endereco.Cidade = CmpCidade.Text;
+                    endereco.Bairro = CmpBairro.Text;
+                    endereco.Rua = CmpRua.Text;
+                    endereco.NumeroResidencia = CmpNum.Text;
+                    endereco.Complemento = CmpComplemento.Text;
+                    endereco.CEP = CmpCEP.Text;
+                    pf.Endereco = endereco;
+                    pf.ID = idBackup;
+                    idBackup = 0;
+                    pessoasF.Add(pf);
+                    exibir();
+                    LimparCampos();
+                }
+                else //registro novo
+                {
+                    
                 PessoaFisica pf = new PessoaFisica();
                 pf.Nome = CmpNome.Text;
                 pf.DataDeNascimento = CmpData.Value;
@@ -131,9 +191,12 @@ namespace WindowsForms
                 endereco.Complemento = CmpComplemento.Text;
                 endereco.CEP = CmpCEP.Text;
                 pf.Endereco = endereco;
-                pf.ID = pessoasF.Count + 1;
+                pf.ID = idAtual;
+                idAtual++;
                 pessoasF.Add(pf);
                 exibir();
+                LimparCampos();
+                }
             }
         }
 
@@ -163,22 +226,67 @@ namespace WindowsForms
         {
             if (tipoPessoa) //se for juridica...
             {
-
+                pessoasJ.Remove((PessoaJuridica)PessoaSelect);
+                LimparCampos();
+                exibir();
             }
             else           //se for fisica...
             {
-
+                pessoasF.Remove((PessoaFisica)PessoaSelect);
+                LimparCampos();
+                exibir();
             }
         }
 
-        private void DGListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void DGListar_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            int linha = e.RowIndex;
 
-        }
+            if (tipoPessoa) //se for juridica...
+            {
+                if (linha >= 0)
+                {
 
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
+                    int id = Convert.ToInt32(this.DGListar.Rows[linha].Cells[0].Value.ToString());
+                    idBackup = id;
+                    PessoaJuridica pessoaJuridica =  pessoasJ.Find(pj => pj.ID == id);
+                    PessoaSelect = pessoaJuridica;
+                    CmpNome.Text = pessoaJuridica.Nome;
+                    CmpData.Value = pessoaJuridica.DataDeNascimento;
+                    CmpCPF.Text = pessoaJuridica.CNPJ;
+                    CmpRG.Text = pessoaJuridica.IE;
+                    CmpCidade.Text = pessoaJuridica.Endereco.Cidade;
+                    CmpBairro.Text = pessoaJuridica.Endereco.Bairro;
+                    CmpRua.Text = pessoaJuridica.Endereco.Rua;
+                    CmpNum.Text = pessoaJuridica.Endereco.NumeroResidencia;
+                    CmpComplemento.Text = pessoaJuridica.Endereco.Complemento;
+                    CmpCEP.Text = pessoaJuridica.Endereco.CEP;
 
+                }
+            }
+            else           //se for fisica...
+            {
+                if (linha >= 0)
+                {
+
+                    int id = Convert.ToInt32(this.DGListar.Rows[linha].Cells[0].Value.ToString());
+                    idBackup = id;
+                    PessoaFisica pessoaFisica = pessoasF.Find(pf => pf.ID == id);
+                    PessoaSelect = pessoaFisica;
+                    CmpNome.Text = pessoaFisica.Nome;
+                    CmpData.Value = pessoaFisica.DataDeNascimento;
+                    CmpCPF.Text = pessoaFisica.CPF;
+                    CmpRG.Text = pessoaFisica.RG;
+                    CmpCidade.Text = pessoaFisica.Endereco.Cidade;
+                    CmpBairro.Text = pessoaFisica.Endereco.Bairro;
+                    CmpRua.Text = pessoaFisica.Endereco.Rua;
+                    CmpNum.Text = pessoaFisica.Endereco.NumeroResidencia;
+                    CmpComplemento.Text = pessoaFisica.Endereco.Complemento;
+                    CmpCEP.Text = pessoaFisica.Endereco.CEP;
+                }
+            }
+            
         }
     }
 }

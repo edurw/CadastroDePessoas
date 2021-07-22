@@ -41,6 +41,17 @@ namespace WindowsForms
             this.CmpComplemento = new System.Windows.Forms.TextBox();
             this.CmpCEP = new System.Windows.Forms.TextBox();
             this.DGListar = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPF_CNPJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RG_IE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rua = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Complemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CEP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.LbNome = new System.Windows.Forms.Label();
@@ -58,17 +69,6 @@ namespace WindowsForms
             this.BtnLimpar = new System.Windows.Forms.Button();
             this.CmpData = new System.Windows.Forms.DateTimePicker();
             this.CmpNum = new System.Windows.Forms.NumericUpDown();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPF_CNPJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RG_IE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rua = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Complemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CEP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DGListar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmpNum)).BeginInit();
             this.SuspendLayout();
@@ -159,14 +159,14 @@ namespace WindowsForms
             this.CmpComplemento.Location = new System.Drawing.Point(111, 368);
             this.CmpComplemento.Name = "CmpComplemento";
             this.CmpComplemento.Size = new System.Drawing.Size(301, 20);
-            this.CmpComplemento.TabIndex = 11;
+            this.CmpComplemento.TabIndex = 12;
             // 
             // CmpCEP
             // 
             this.CmpCEP.Location = new System.Drawing.Point(111, 394);
             this.CmpCEP.Name = "CmpCEP";
             this.CmpCEP.Size = new System.Drawing.Size(301, 20);
-            this.CmpCEP.TabIndex = 12;
+            this.CmpCEP.TabIndex = 13;
             // 
             // DGListar
             // 
@@ -184,10 +184,78 @@ namespace WindowsForms
             this.Complemento,
             this.CEP});
             this.DGListar.Location = new System.Drawing.Point(457, 160);
+            this.DGListar.MultiSelect = false;
             this.DGListar.Name = "DGListar";
+            this.DGListar.ReadOnly = true;
             this.DGListar.Size = new System.Drawing.Size(337, 254);
-            this.DGListar.TabIndex = 13;
-            this.DGListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGListar_CellContentClick);
+            this.DGListar.TabIndex = 18;
+            this.DGListar.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGListar_CellMouseClick);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "Id";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            // 
+            // Data
+            // 
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
+            // 
+            // CPF_CNPJ
+            // 
+            this.CPF_CNPJ.HeaderText = "CPF/CNPJ";
+            this.CPF_CNPJ.Name = "CPF_CNPJ";
+            this.CPF_CNPJ.ReadOnly = true;
+            // 
+            // RG_IE
+            // 
+            this.RG_IE.HeaderText = "RG/IE";
+            this.RG_IE.Name = "RG_IE";
+            this.RG_IE.ReadOnly = true;
+            // 
+            // Cidade
+            // 
+            this.Cidade.HeaderText = "Cidade";
+            this.Cidade.Name = "Cidade";
+            this.Cidade.ReadOnly = true;
+            // 
+            // Bairro
+            // 
+            this.Bairro.HeaderText = "Bairro";
+            this.Bairro.Name = "Bairro";
+            this.Bairro.ReadOnly = true;
+            // 
+            // Rua
+            // 
+            this.Rua.HeaderText = "Rua";
+            this.Rua.Name = "Rua";
+            this.Rua.ReadOnly = true;
+            // 
+            // Numero
+            // 
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            // 
+            // Complemento
+            // 
+            this.Complemento.HeaderText = "Complemento";
+            this.Complemento.Name = "Complemento";
+            this.Complemento.ReadOnly = true;
+            // 
+            // CEP
+            // 
+            this.CEP.HeaderText = "CEP";
+            this.CEP.Name = "CEP";
+            this.CEP.ReadOnly = true;
             // 
             // LbNome
             // 
@@ -314,7 +382,7 @@ namespace WindowsForms
             this.BtnLimpar.Location = new System.Drawing.Point(321, 420);
             this.BtnLimpar.Name = "BtnLimpar";
             this.BtnLimpar.Size = new System.Drawing.Size(91, 23);
-            this.BtnLimpar.TabIndex = 18;
+            this.BtnLimpar.TabIndex = 17;
             this.BtnLimpar.Text = "Limpar campos";
             this.BtnLimpar.UseVisualStyleBackColor = true;
             this.BtnLimpar.Click += new System.EventHandler(this.BtnLimpar_Click);
@@ -336,63 +404,7 @@ namespace WindowsForms
             0});
             this.CmpNum.Name = "CmpNum";
             this.CmpNum.Size = new System.Drawing.Size(301, 20);
-            this.CmpNum.TabIndex = 20;
-            this.CmpNum.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "Id";
-            this.ID.Name = "ID";
-            // 
-            // Nome
-            // 
-            this.Nome.HeaderText = "Nome";
-            this.Nome.Name = "Nome";
-            // 
-            // Data
-            // 
-            this.Data.HeaderText = "Data";
-            this.Data.Name = "Data";
-            // 
-            // CPF_CNPJ
-            // 
-            this.CPF_CNPJ.HeaderText = "CPF/CNPJ";
-            this.CPF_CNPJ.Name = "CPF_CNPJ";
-            // 
-            // RG_IE
-            // 
-            this.RG_IE.HeaderText = "RG/IE";
-            this.RG_IE.Name = "RG_IE";
-            // 
-            // Cidade
-            // 
-            this.Cidade.HeaderText = "Cidade";
-            this.Cidade.Name = "Cidade";
-            // 
-            // Bairro
-            // 
-            this.Bairro.HeaderText = "Bairro";
-            this.Bairro.Name = "Bairro";
-            // 
-            // Rua
-            // 
-            this.Rua.HeaderText = "Rua";
-            this.Rua.Name = "Rua";
-            // 
-            // Numero
-            // 
-            this.Numero.HeaderText = "Numero";
-            this.Numero.Name = "Numero";
-            // 
-            // Complemento
-            // 
-            this.Complemento.HeaderText = "Complemento";
-            this.Complemento.Name = "Complemento";
-            // 
-            // CEP
-            // 
-            this.CEP.HeaderText = "CEP";
-            this.CEP.Name = "CEP";
+            this.CmpNum.TabIndex = 11;
             // 
             // Form1
             // 
