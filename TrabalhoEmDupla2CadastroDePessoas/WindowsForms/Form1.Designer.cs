@@ -189,6 +189,7 @@ namespace WindowsForms
             this.DGListar.ReadOnly = true;
             this.DGListar.Size = new System.Drawing.Size(337, 254);
             this.DGListar.TabIndex = 18;
+            this.DGListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGListar_CellContentClick);
             this.DGListar.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGListar_CellMouseClick);
             // 
             // ID

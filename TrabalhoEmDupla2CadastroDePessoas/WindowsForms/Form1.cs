@@ -288,5 +288,10 @@ namespace WindowsForms
             }
             
         }
+
+        private void DGListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
