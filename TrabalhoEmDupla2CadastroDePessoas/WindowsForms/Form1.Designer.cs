@@ -29,6 +29,7 @@ namespace WindowsForms
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.LbTitulo = new System.Windows.Forms.Label();
             this.RdFisica = new System.Windows.Forms.RadioButton();
             this.RdJuridica = new System.Windows.Forms.RadioButton();
@@ -69,8 +70,10 @@ namespace WindowsForms
             this.BtnLimpar = new System.Windows.Forms.Button();
             this.CmpData = new System.Windows.Forms.DateTimePicker();
             this.CmpNum = new System.Windows.Forms.NumericUpDown();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGListar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmpNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // LbTitulo
@@ -189,7 +192,6 @@ namespace WindowsForms
             this.DGListar.ReadOnly = true;
             this.DGListar.Size = new System.Drawing.Size(337, 254);
             this.DGListar.TabIndex = 18;
-            this.DGListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGListar_CellContentClick);
             this.DGListar.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DGListar_CellMouseClick);
             // 
             // ID
@@ -197,6 +199,7 @@ namespace WindowsForms
             this.ID.HeaderText = "Id";
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
+            this.ID.Width = 30;
             // 
             // Nome
             // 
@@ -407,6 +410,17 @@ namespace WindowsForms
             this.CmpNum.Size = new System.Drawing.Size(301, 20);
             this.CmpNum.TabIndex = 11;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(806, 449);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AccessibleName = "teste";
@@ -440,10 +454,12 @@ namespace WindowsForms
             this.Controls.Add(this.RdJuridica);
             this.Controls.Add(this.RdFisica);
             this.Controls.Add(this.LbTitulo);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.DGListar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CmpNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -491,6 +507,7 @@ namespace WindowsForms
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Complemento;
         private System.Windows.Forms.DataGridViewTextBoxColumn CEP;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

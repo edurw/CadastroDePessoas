@@ -72,6 +72,7 @@ namespace WindowsForms
 
         private void MudaJuridica()
         {
+
             LbCPF.Text = "CNPJ:";
             LbRG.Text = "IE:";
             LbData.Text = "Data de Fundação:";
@@ -104,10 +105,32 @@ namespace WindowsForms
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
+                       
+            List<TextBox> pop = new List<TextBox>()
+            {
+                CmpNome, CmpCPF, CmpRG, CmpCidade, CmpBairro, CmpRua, CmpCEP
+            };
             if (tipoPessoa) //se for juridica...
             {
+                foreach (var item in pop)
+                {
+                    if (item.Text == string.Empty)
+                    {
+
+                        MessageBox.Show("Campos obrigatorios vazios.");
+                        item.BackColor = System.Drawing.Color.Red;
+                        return;
+                    }
+                    else if (item.Text != string.Empty)
+                    {
+
+                        item.BackColor = System.Drawing.Color.White;
+                       
+                    }
+                }
                 if (idBackup != 0)//alterar registro
                 {
+                    
                     pessoasJ.Remove((PessoaJuridica)PessoaSelect);
                     PessoaJuridica pj = new PessoaJuridica();
                     pj.Nome = CmpNome.Text;
@@ -153,6 +176,21 @@ namespace WindowsForms
             }
             else           //se for fisica...
             {
+                foreach (var item in pop)
+                {
+                    if (item.Text == string.Empty)
+                    {
+                        MessageBox.Show("Campos obrigatorios vazios.");
+                        item.BackColor = System.Drawing.Color.Red;
+                        return;
+                    }
+                    else if (item.Text != string.Empty)
+                    {
+
+                        item.BackColor = System.Drawing.Color.White;
+                        
+                    }
+                }
                 if (idBackup != 0)//registro alterar
                 {
                     pessoasF.Remove((PessoaFisica)PessoaSelect);
@@ -173,6 +211,7 @@ namespace WindowsForms
                     idBackup = 0;
                     pessoasF.Add(pf);
                     exibir();
+                    this.DGListar.Sort(this.DGListar.Columns["Id"], ListSortDirection.Ascending);
                     LimparCampos();
                 }
                 else //registro novo
@@ -286,12 +325,9 @@ namespace WindowsForms
                     CmpCEP.Text = pessoaFisica.Endereco.CEP;
                 }
             }
+
             
         }
 
-        private void DGListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }
