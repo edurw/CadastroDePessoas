@@ -166,6 +166,7 @@ namespace WindowsForms
                     idBackup = 0;
                     pessoasJ.Add(pj);
                     exibir();
+                    this.DGListar.Sort(this.DGListar.Columns["Id"], ListSortDirection.Ascending);
                     LimparCampos();
                 }
                 else //registro novo
