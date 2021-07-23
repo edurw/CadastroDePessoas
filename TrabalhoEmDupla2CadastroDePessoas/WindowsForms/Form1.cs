@@ -59,6 +59,15 @@ namespace WindowsForms
 
         private void MudaFisica()
         {
+            CmpNome.BackColor = System.Drawing.Color.White;
+            CmpCPF.BackColor = System.Drawing.Color.White;
+            CmpRG.BackColor = System.Drawing.Color.White;
+            CmpCidade.BackColor = System.Drawing.Color.White;
+            CmpBairro.BackColor = System.Drawing.Color.White;
+            CmpRua.BackColor = System.Drawing.Color.White;
+            CmpComplemento.BackColor = System.Drawing.Color.White;
+            CmpCEP.BackColor = System.Drawing.Color.White;
+
             LbCPF.Text="CPF:";
             LbRG.Text = "RG:";
             LbData.Text = "Data de Nascimento:";
@@ -72,6 +81,14 @@ namespace WindowsForms
 
         private void MudaJuridica()
         {
+            CmpNome.BackColor = System.Drawing.Color.White;
+            CmpCPF.BackColor = System.Drawing.Color.White;
+            CmpRG.BackColor = System.Drawing.Color.White;
+            CmpCidade.BackColor = System.Drawing.Color.White;
+            CmpBairro.BackColor = System.Drawing.Color.White;
+            CmpRua.BackColor = System.Drawing.Color.White;
+            CmpComplemento.BackColor = System.Drawing.Color.White;
+            CmpCEP.BackColor = System.Drawing.Color.White;
 
             LbCPF.Text = "CNPJ:";
             LbRG.Text = "IE:";
